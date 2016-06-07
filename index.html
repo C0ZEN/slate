@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>API Documentation</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +86,12 @@
   color: #90a959;
 }
     </style>
-      <script src="javascripts/all.js"></script>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,246 +101,484 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <div id="toc">
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
+        <h1 id="documentation-railcommander">Documentation RailCommander</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>RailCommander est une application de vente de ticket de train révolutionnaire 
+pensée pour l&#39;achat express de tickets.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Nous proposons un moyen simple, rapide et personnalisé afin de choisir des
+tickets en rapport à des informations pertinentes à l&#39;utilisateur.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>RailCommander est disponible sur Android, iOs et desktop pour toute les 
+résolutions.</p>
 
-<h1 id="authentication">Authentication</h1>
+<h2 id="navigation-mobile">Navigation (mobile)</h2>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h3 id="accueil">Accueil</h3>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+<aside class="info">
+Le contenu de la page diffère si un utilisateur est connecté.
 </aside>
 
-<h1 id="kittens">Kittens</h1>
+<p>Si l&#39;utilisateur n&#39;est pas connecté, la vue contient un message de bienvenue,
+une présentation de RailCommander et des liens vers connexion et inscription.</p>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>Si l&#39;utilisateur est connecté, la vue contient un message de bienvenue,
+des statistiques sur RailCommande et un lien vers les achats.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h3 id="accueil-filtres">Accueil/Filtres</h3>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
+<p>La vue contient les filtres pour les voyages et le bouton vers la liste des 
+voyages.</p>
 
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
+<p>Les filtres rapides ne trient qu&#39;un voyage (avec ses horaires correspondant).</p>
 
-<p>This endpoint retrieves all kittens.</p>
+<p>Les filtres personnalisés ajustent la recherche.</p>
 
-<h3 id="http-request">HTTP Request</h3>
+<p>Pour filtrer tous les voyages, il faut utiliser le bouton &lsquo;Je choisi mes voyages&rsquo;.</p>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<aside class="warning">
+Le bouton vers la vue des voyages est visible que si les filtres obligatoires
+sont valides.
 </aside>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h3 id="accueil-voyages">Accueil/Voyages</h3>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>Liste les voyages en fonction des filtres.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
+<p>Un champ de recherche est disponible pour trier les voyages.</p>
 
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<p>Un sliding de droite à gauche affiche un bouton supprimer.<br>
+Ce bouton permet de supprimer les voyages non désirables.</p>
 
-<p>This endpoint retrieves a specific kitten.</p>
+<p>Un bouton refresh permet de réafficher tous les voyages issues de la recherche.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<aside class="warning">
+Le bouton vers la vue de confirmation est visible que si au moins un voyage est
+sélectionné.
+</aside>
 
-<h3 id="http-request">HTTP Request</h3>
+<h3 id="accueil-confirmation">Accueil/Confirmation</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p>Liste les voyages sélectionnés avec les sous étapes correspondantes.</p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<p>Un sliding de droite à gauche affiche les boutons plus et moins.<br>
+Ces boutons permettent de changé la quantité de ticket pour le voyage 
+correspondant.</p>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
+<aside class="warning">
+Le bouton vers la vue suivante est visible que si au moins un voyage est
+sélectionné.
+</aside>
 
-          <h1 id="errors">Errors</h1>
+<aside class="info">
+Le contenu de la page diffère si un utilisateur est connecté.
+</aside>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+<p>Si l&#39;utilisateur n&#39;est pas connecté, la vue contient un lien vers connexion.</p>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>Si l&#39;utilisateur est connecté, la vue contient un lien vers l&#39;achat.</p>
 
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
-</tr>
-</tbody></table>
+<h3 id="accueil-connexion">Accueil/Connexion</h3>
+
+<p>Affiche le bouton vers la connexion.</p>
+
+<aside class="info">
+Après une connexion, la vue contient un message de confirmation de connexion et
+le lien vers la page d'achat.
+</aside>
+
+<h3 id="accueil-achat">Accueil/Achat</h3>
+
+<p>Liste des voyages sélectionnés.</p>
+
+<p>La vue contient des citations de personnalités importantes.</p>
+
+<p>Le bouton Paypal permet d&#39;effectué l&#39;achat des tickets.</p>
+
+<aside class="info">
+Un message de confirmation est présent dans la vue après qu'un achat Paypal
+soit effectué ainsi qu'un bouton vers les achats.
+</aside>
+
+<h3 id="accueil-paypal">Accueil/Paypal</h3>
+
+<p>Lors d&#39;un achat avec Paypal, un modal s&#39;ouvre.</p>
+
+<p>L&#39;utilisateur doit renseigné ses informations de connexion.</p>
+
+<p>Il pourra procédé au paiement.</p>
+
+<p>Lorsque le paiement est réussi, le modal se ferme.</p>
+
+<h3 id="compte">Compte</h3>
+
+<p>Contient une liste vers d&#39;autres vues concernant l&#39;utilisateur.</p>
+
+<aside class="info">
+Le contenu de la page diffère si un utilisateur est connecté.
+</aside>
+
+<p>Si l&#39;utilisateur n&#39;est pas connecté, la vue contient des liens vers connexion et
+la création d&#39;un compte.</p>
+
+<p>Si l&#39;utilisateur est connecté, la vue contient des liens vers compte, achats,
+statistiques et déconnexion.</p>
+
+<h3 id="compte-compte">Compte/Compte</h3>
+
+<p>Contient les informations sur l&#39;utilisateur connecté en lecture seule.</p>
+
+<p>Un bouton vers l&#39;édition du compte est présent.</p>
+
+<h3 id="compte-compte-edition">Compte/Compte/Edition</h3>
+
+<p>Contient les informations sur l&#39;utilisateur connecté en lecture/écriture.</p>
+
+<p>L&#39;utilisateur peut modifier ses informations (sauf l&#39;email qui est unique) puis
+valider les modifications via le bouton de sauvegarde.</p>
+
+<h3 id="compte-achats">Compte/Achats</h3>
+
+<p>Contient la liste des tickets achetés pour l&#39;utilisateur connecté.</p>
+
+<p>Sélectionner un ticket pour afficher les actions disponibles.<br>
+Après sélection, un bouton imprimer le ticket est disponible.<br>
+Ce bouton permet l&#39;impression depuis le téléphone.</p>
+
+<h3 id="compte-statistiques">Compte/Statistiques</h3>
+
+<p>Contient les statistiques liés à cet utilisateur.</p>
+
+<p>Nombre de tickets achetés, argent dépensé, kilomètres parcourus, like de 
+RailCommander et succès pour obtenir des réductions sur les tarifs.</p>
+
+<p>Possibilité de changer son like.</p>
+
+<h3 id="informations">Informations</h3>
+
+<p>Contient une liste vers d&#39;autres vues concernant toutes les informations
+sur RailCommander.</p>
+
+<h3 id="informations-a-propos-de-nous">Informations/A propos de nous</h3>
+
+<p>Contient des informations sur RailCommander.</p>
+
+<p>L&#39;histoire de RailCommander avec son commencement et des valeurs qui nous
+importe et que nous mettons en place.</p>
+
+<h3 id="informations-team">Informations/Team</h3>
+
+<p>Contient la liste des collaborateurs intervenants pour RailCommander.</p>
+
+<p>Un zoom est possible en sélectionnant un utilisateur afin d&#39;obtenir des 
+informations supplémentaires.</p>
+
+<h3 id="informations-team-zoom">Informations/Team/Zoom</h3>
+
+<p>Contient les détails pour le collaborateur sélectionné.</p>
+
+<h3 id="informations-statistiques-g-n-rales">Informations/Statistiques générales</h3>
+
+<p>Contient des statistiques à propos des achats de RailCommander.</p>
+
+<p>Contient le taux de satisfaction, les kilomètres parcourus, le nombre de ticket
+achetés et l&#39;argent dépensé en tickets pour tous les utilisateurs.</p>
+
+<h3 id="informations-statistiques">Informations/Statistiques</h3>
+
+<p>Contient les statistiques de l&#39;utilisateur connecté.
+Voir <em>Compte/Statistiques</em>.</p>
+
+<h3 id="informations-mentions-l-gales">Informations/Mentions légales</h3>
+
+<p>Contient toutes les mentions légales de RailCommander.</p>
+
+<p>Une surprise attend les courageux lecteur à la fin.</p>
+
+<h3 id="connexion">Connexion</h3>
+
+<p>Contient sous forme de modal le formulaire pour se connecté avec Google,
+Facebook et RailCommander.</p>
+
+<p>Contient également les boutons vers la création de compte ou le mot de passe
+oublié.</p>
+
+<h3 id="inscription">Inscription</h3>
+
+<p>Contient sous forme de modal le formulaire pour s&#39;inscrire avec RailCommander.</p>
+
+<h3 id="mot-de-passe-oubli">Mot de passe oublié</h3>
+
+<p>Contient sous forme de modal le formulaire pour obtenir un nouveau mot de passe.</p>
+
+<p>Cette action envoi le mot de passe par mail.</p>
+
+<h2 id="navigation-desktop">Navigation (desktop)</h2>
+
+<h3 id="accueil">Accueil</h3>
+
+<p>Contient un message de bienvenue, une présentation de RailCommander, des
+statistiques et nos valeurs.</p>
+
+<h3 id="filtres">Filtres</h3>
+
+<p>La vue contient les filtres pour les voyages et le bouton vers la liste des 
+voyages.</p>
+
+<p>Les filtres rapides ne trient qu&#39;un voyage (avec ses horaires correspondant).</p>
+
+<p>Les filtres personnalisés ajustent la recherche.</p>
+
+<p>Pour filtrer tous les voyages, il faut utiliser le bouton &#39;Je cherche mon voyage&rsquo;.</p>
+
+<h3 id="voyages">Voyages</h3>
+
+<p>Liste les voyages en fonction des filtres.</p>
+
+<p>Un champ de recherche est disponible pour trier les voyages.</p>
+
+<p>Il est possible de trier par ordre croissant ou décroissant les données en
+sélectionnant les headers du tableau de voyages.</p>
+
+<aside class="warning">
+Le bouton vers la vue de confirmation est visible que si au moins un voyage est
+sélectionné.
+</aside>
+
+<h3 id="confirmation">Confirmation</h3>
+
+<p>Liste les voyages sélectionnés avec les sous étapes correspondantes.</p>
+
+<p>Une colonne du tableau contient les boutons plus et moins.<br>
+Ces boutons permettent de changé la quantité de ticket pour le voyage 
+correspondant.</p>
+
+<aside class="warning">
+Le bouton vers la vue suivante est visible que si au moins un voyage est
+sélectionné.
+</aside>
+
+<aside class="info">
+Le contenu de la page diffère si un utilisateur est connecté.
+</aside>
+
+<p>Si l&#39;utilisateur n&#39;est pas connecté, la vue contient un lien vers connexion.</p>
+
+<p>Si l&#39;utilisateur est connecté, la vue contient un lien vers l&#39;achat.</p>
+
+<h3 id="connexion">Connexion</h3>
+
+<p>Affiche le bouton vers la connexion.</p>
+
+<aside class="info">
+Après une connexion, la vue contient un message de confirmation de connexion et
+le lien vers la page d'achat.
+</aside>
+
+<h3 id="achat">Achat</h3>
+
+<p>Liste des voyages sélectionnés.</p>
+
+<p>Le bouton Paypal permet d&#39;effectué l&#39;achat des tickets.</p>
+
+<aside class="info">
+Après un achat Paypal, l'utilisateur sera redirigé vers la vue d'impression.
+</aside>
+
+<h3 id="paypal">Paypal</h3>
+
+<p>Lors d&#39;un achat avec Paypal, un modal s&#39;ouvre.</p>
+
+<p>L&#39;utilisateur doit renseigné ses informations de connexion.</p>
+
+<p>Il pourra procédé au paiement.</p>
+
+<h3 id="impression">Impression</h3>
+
+<p>Liste des voyages venants d&#39;être achetés avec Paypal.</p>
+
+<p>Permet l&#39;impression des tickets.</p>
+
+<h3 id="compte">Compte</h3>
+
+<aside class="info">
+Visible que si l'utilisateur est connecté.
+</aside>
+
+<p>Contient sous forme de modal les informations sur l&#39;utilisateur connecté en lecture/écriture.</p>
+
+<p>L&#39;utilisateur peut modifier ses informations (sauf l&#39;email qui est unique) puis
+valider les modifications via le bouton de sauvegarde.</p>
+
+<h3 id="achats">Achats</h3>
+
+<aside class="info">
+Visible que si l'utilisateur est connecté.
+</aside>
+
+<p>Contient sous forme de modal la liste des tickets achetés, les succès et les 
+statistiques de l&#39;utilisateur connecté.</p>
+
+<p>Un bouton permet l&#39;impression des tickets.</p>
+
+<h3 id="applications-mobiles">Applications mobiles</h3>
+
+<p>Contient sous forme de modal de la publicité pour RailCommander indiquant
+que nous possédons également une application mobile.</p>
+
+<h3 id="a-propos-de-nous">A propos de nous</h3>
+
+<p>Contient sous forme de modal la liste des collaborateurs intervenants pour 
+RailCommander.</p>
+
+<h3 id="mentions-l-gales">Mentions légales</h3>
+
+<p>Contient sous forme de modal toutes les mentions légales de RailCommander.</p>
+
+<h3 id="connexion">Connexion</h3>
+
+<p>Contient sous forme de modal le formulaire pour se connecté avec Google,
+Facebook et RailCommander.</p>
+
+<p>Contient également les boutons vers la création de compte ou le mot de passe
+oublié.</p>
+
+<h3 id="inscription">Inscription</h3>
+
+<p>Contient sous forme de modal le formulaire pour s&#39;inscrire avec RailCommander.</p>
+
+<h3 id="mot-de-passe-oubli">Mot de passe oublié</h3>
+
+<p>Contient sous forme de modal le formulaire pour obtenir un nouveau mot de passe.</p>
+
+<p>Cette action envoi le mot de passe par mail.</p>
+
+<h2 id="simulation-d-39-achat">Simulation d&#39;achat</h2>
+
+<p>Dans cette section, nous allons voir comment acheté des tickets avec RailCommander.</p>
+
+<h3 id="filtrer">Filtrer</h3>
+
+<p>Aller dans la vue des filtres, la première étape du procédé.</p>
+
+<p>Vous devez remplir les champs obligatoires.<br>
+En l&#39;occurence, il s&#39;agit de la ville d&#39;arrivée et la ville de départ.<br>
+Vous pouvez dès à présent passé à l&#39;étape 2 ou filtrer plus précisement
+votre recherche de voyage.</p>
+
+<p>Les autres filtres disponibles sont les suivants :
+- Prix maximum
+- Date de départ (jour)
+- Heures de départ (créneau, heure minimale/maximale)</p>
+
+<p>Pour valider votre recherche, vous avez trois solutions :
+- Le moins cher (affiche le voyage le moins cher)
+- Le plus rapide (affiche le voyage le plus rapide)
+- Tous (affiche tous les voyages en fonction des filtres)</p>
+
+<p>Dans cette simulation, nous prenons la troisième option.</p>
+
+<h3 id="choisir">Choisir</h3>
+
+<p>Vous êtes maintenant dans la vue avec votre liste de voyage.</p>
+
+<p>Vous avez plusieurs possibilités qui s&#39;offrent à vous.<br>
+Sélectionnez par un clique les voyages qui vous intéressent.</p>
+
+<p>Notez que vous devez sélectionné au moins un voyage pour passer à la vue 
+suivante.</p>
+
+<p>Dans cette simulation, nous sélectionnons les deux premiers voyages puis nous 
+allons à l&#39;étape suivante.</p>
+
+<h3 id="valider">Valider</h3>
+
+<p>Vous êtes maintenant dans la vue avec votre liste de voyage sélectionnés.</p>
+
+<p>Vous pouvez visualiser en détails chaque sous étape du voyage.<br>
+Par exemple, le trajet Lille-Marseille effectue dans un premier temps un 
+Lille-Paris, puis Paris-Lyon et pour finir Lyon-Marseille.<br>
+Ces trois étapes sont donc visualiable sur cette vue.</p>
+
+<p>Vous pouvez modifier la quantité de ticket achetés.</p>
+
+<p>Dans cette simulation, prenons deux tickets pour nos voyages puis allons à l&rsquo;
+étape suivante.</p>
+
+<h3 id="connexion">Connexion</h3>
+
+<p>Vous êtes maintenant dans la vue de connexion.</p>
+
+<p>Vous n&#39;êtes toujours pas connecté à RailCommander.<br>
+Le moment est venu de vous connecté.</p>
+
+<p>Dans cette simulation, nous allons nous connecter avec notre compte RailCommander
+mais vous pouvez aussi utiliser votre compte Google ou Facebook ou créer un 
+compte RailCommander.</p>
+
+<p>Une fois la connexion effectuée, nous allons à l&#39;étape suivante.</p>
+
+<h3 id="achat">Achat</h3>
+
+<p>Vous êtes maintenant dans la vue d&#39;achat.</p>
+
+<p>Vous pouvez visualiser les voyages précédemment sélectionné avec leur quantité.</p>
+
+<p>Procédons maintenant au paiement avec Paypal.<br>
+Cliquez sur le bouton Paypal.<br>
+Connectez-vous avec votre compte Paypal.<br>
+Procédez maintenant au paiement des tickets.<br>
+Une fois le paiement effectué, un lien vous permet de revenir sur RailCommander.</p>
+
+<p>Vous êtes maintenant sur la vue des tickets et vous pouvez les imprimer.</p>
+
+<aside class="info">
+Vous recevrez également mail de confirmation avec les tickets en pdf.
+</aside>
+
+<h2 id="s-curit">Sécurité</h2>
+
+<p><strong>Mots de passe</strong></p>
+
+<p>Les mots de passe sont <em>hashés</em> et <em>salés</em> en base de donnée afin de veiller à 
+une sécurité des données optimales.</p>
+
+<p><strong>Stockage</strong></p>
+
+<p>Les informations d&#39;indetifications sont stockées dans le <em>LocalStorage</em> afin de
+persister les données et d&#39;offrir un gain de temps sur la connexion.
+Il en va de même pour le choix des filtres et voyages.</p>
+
+<p><strong>Droits</strong></p>
+
+<p>Lors de l&#39;accès à une page, nous vérifions les droits pour éviter toute 
+intrusion dans notre application.</p>
+
+<h2 id="cr-dits">Crédits</h2>
+
+<p>Tous les droits reviennent à RailCommander.
+Lisez les conditions d&#39;utilisations pour plus de détails.</p>
+
+<p><strong>Remerciements :</strong></p>
+
+<ul>
+<li>BOUTHORS Clément</li>
+<li>COMPERE Benoit</li>
+<li>EGO Romain</li>
+<li>TESTELIN Geoffrey</li>
+</ul>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
